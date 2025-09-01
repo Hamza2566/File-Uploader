@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cal+Sans&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poetsen+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>🔑 </title>
+</head>
+<body>
+     <%- include('partials/header') %>
+
+
+     <div class="sign-wrapper">
+        <div class="sign-content">
+            <h2>SigIn</h2>
+            <form action="/sigin" method="post" class="sign-form">
+                <label for="username">username </label>
+                <input type="text" name="username" id="username">
+                <label for="password">password</label>
+                <input type="password" name="password" id="password">
+                <input type="submit" value="submit" class="submit">
+            </form>
+        </div>
+
+     </div>
+</body>
+</html>

@@ -39,6 +39,13 @@ app.use(passport.session())
 app.get('/',(req,res)=>{
     res.render('home')
 })
+app.get('/signin',(req,res)=>{
+    res.render('signin')
+})
+app.get('/signup',(req,res)=>{
+    res.render('signup')
+})
+
 const port = process.env.PORT
 app.listen(port,()=>{
     console.log(`Server is Listining On ${port}`);
