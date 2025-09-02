@@ -3,6 +3,8 @@ import { PrismaSessionStore } from '@quixo3/prisma-session-store'
 import express from 'express'
 import session from 'express-session'
 import passport from 'passport'
+import signup from './routes/signup.js'
+import signin from './routes/signin.js'
 const prisma = new PrismaClient()
 
 const app = express()
@@ -36,15 +38,16 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
+
+// routes
+app.use('/signup',signup)
+app.use('/signin',signin)
+
+
 app.get('/',(req,res)=>{
     res.render('home')
 })
-app.get('/signin',(req,res)=>{
-    res.render('signin')
-})
-app.get('/signup',(req,res)=>{
-    res.render('signup')
-})
+
 
 const port = process.env.PORT
 app.listen(port,()=>{
