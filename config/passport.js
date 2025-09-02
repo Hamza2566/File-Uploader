@@ -1,7 +1,12 @@
-import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from "@prisma/client";
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import bcrypt from "bcryptjs";
+
+
 
 const prisma = new PrismaClient()
-passport.use(
+  passport.use(
   new LocalStrategy( async (username, password, done) => {
     try {
       const user = await prisma.user.findUnique({ where: { username } });
@@ -14,11 +19,7 @@ passport.use(
     }
   })
 );
-passport.serializeUser((user, done) => {
-  // store user id in the session
-  done(null, user.id);
-});
-
+passport.serializeUser((user, done) => {  done(null, user.id);});
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await prisma.user.findUnique({ where: { id: Number(id) } });
@@ -27,4 +28,5 @@ passport.deserializeUser(async (id, done) => {
     done(err);
   }
 });
+export default passport
 

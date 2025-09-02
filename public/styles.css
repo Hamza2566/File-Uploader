@@ -182,7 +182,6 @@ a{
     cursor: pointer;
 }
 .signup-wrapper{
-    display: flex;
     height: 90vh;
     display: flex;
     justify-content: center;
@@ -194,11 +193,9 @@ a{
     border: 2px solid var(--color-border);
     border-radius: 10px;
     width: 35%;
-    height: 85vh;
     display: flex;
     flex-direction: column;
     gap: 20px;
-
 }
 .signup-form{
     display: flex;
@@ -218,7 +215,7 @@ a{
     border: 2px solid var(--color-accent);
 }
 .signup-form .submit{
-   margin: 10% 0 0 25%; /* top right bottom left */
+   margin: 5% 0 0 25%; /* top right bottom left */
     background-color: var(--color-accent);
     width: 50%;
     padding: 0.7rem;
@@ -228,4 +225,9 @@ a{
     font-weight: bolder;
     cursor: pointer;
 
+}
+.msg-errors{
+    color: var(--color-danger);
+    padding-left: 5%;
+    font-size: 0.7rem;
 }
