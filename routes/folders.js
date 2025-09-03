@@ -10,8 +10,16 @@ folders.get("/",async (req, res) => {
   where: { userId: req.user.id },
   include: { files: true }
 });
-  res.render("folders", { user: req.user?.username || null , folders:folders});
+    const files = await prisma.file.findMany({
+         where: { id: Number(req.user.id) },
+         include: { folder: true }
+    })
+  res.render("folders", { user: req.user?.username || null , folders:folders , files: files})
 });
+
+
+
+
 folders.post("/", async (req, res) => {
   // console.log(req.body);
   const name = req.body.folderName;

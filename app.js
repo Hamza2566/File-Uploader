@@ -6,6 +6,7 @@ import passport from "./config/passport.js";
 import signup from './routes/signup.js'
 import signin from './routes/signin.js'
 import folders from './routes/folders.js'
+import files from './routes/files.js';
 const prisma = new PrismaClient()
 
 const app = express()
@@ -47,24 +48,13 @@ app.use((req, res, next) => {
 app.use('/signup',signup)
 app.use('/signin',signin)
 app.use('/folders',folders)
+app.use('/folder',files)
 
 
 app.get('/',(req,res)=>{
     res.render('home')
 })
 
-app.post("/folders/files", async (req, res) => {
-//   const folderId = Number(req.body.folderId);
-  console.log(req.body);
-  
-
-//   const folder = await prisma.folder.findUnique({
-//     where: { id: folderId },
-//     include: { files: true }
-//   });
-
-//   res.render("partials/files", { folder });
-});
 
 
 

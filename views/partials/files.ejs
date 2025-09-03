@@ -1,0 +1,13 @@
+<% if (files.length > 0) { %>
+  <h3>Files in <%= files[0].folder.name %></h3>
+  <ul>
+    <% files.forEach(file => { %>
+      <li>
+        <strong>Name:</strong> <%= file.name %> <br>
+        <strong>Content:</strong> <%= file.content %>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <h3>No files in this folder</h3>
+<% } %>
