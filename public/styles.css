@@ -1,238 +1,236 @@
 :root {
   /* === PRIMARY COLORS === */
-  --color-primary: #FFFFFF;        /* Main brand color: pure white for page background, header background if light */
-  --color-primary-soft: #FAFAFA;   /* Slightly off-white: use for header sub-sections, cards, panels */
+  --color-primary: #ffffff; /* Main brand color: pure white for page background, header background if light */
+  --color-primary-soft: #fafafa; /* Slightly off-white: use for header sub-sections, cards, panels */
 
   /* === HEADER COLORS === */
-  --color-header-bg: var(--color-primary);        /* Header background (main bar) */
-  --color-header-bg-soft: var(--color-primary-soft); /* Sub-header, dropdown backgrounds in header */
-  --color-header-text: #111827;                  /* Main header text (logo, nav links) */
-  --color-header-text-muted: #6B7280;           /* Secondary text in header (subtitles, small links) */
-  --color-header-border: #E5E7EB;               /* Bottom border or divider in header */
+  --color-header-bg: var(--color-primary); /* Header background (main bar) */
+  --color-header-bg-soft: var(
+    --color-primary-soft
+  ); /* Sub-header, dropdown backgrounds in header */
+  --color-header-text: #111827; /* Main header text (logo, nav links) */
+  --color-header-text-muted: #6b7280; /* Secondary text in header (subtitles, small links) */
+  --color-header-border: #e5e7eb; /* Bottom border or divider in header */
 
   /* === TEXT COLORS === */
-  --color-text: #111827;          /* Primary text (headings, body) */
-  --color-text-muted: #6B7280;    /* Secondary text (paragraphs, captions) */
-  --color-text-inverse: #FFFFFF;  /* Text when on dark backgrounds or accents */
+  --color-text: #111827; /* Primary text (headings, body) */
+  --color-text-muted: #6b7280; /* Secondary text (paragraphs, captions) */
+  --color-text-inverse: #ffffff; /* Text when on dark backgrounds or accents */
 
   /* === BORDER & DIVIDERS === */
-  --color-border: #E5E7EB;        /* General borders (cards, inputs, dividers) */
+  --color-border: #e5e7eb; /* General borders (cards, inputs, dividers) */
 
   /* === ACCENTS (cool, modern tones) === */
-  --color-accent: #0EA5E9;        /* Accent color for buttons, links, highlights */
-  --color-accent-hover: #0284C7;  /* Hover state for accent items */
-  --color-accent-bg: #E0F2FE;     /* Very light accent background (badges, subtle highlights) */
+  --color-accent: #0ea5e9; /* Accent color for buttons, links, highlights */
+  --color-accent-hover: #0284c7; /* Hover state for accent items */
+  --color-accent-bg: #e0f2fe; /* Very light accent background (badges, subtle highlights) */
 
   /* === FEEDBACK (semantic states) === */
-  --color-success: #10B981;       /* Green: success alerts, badges, buttons */
-  --color-warning: #F59E0B;       /* Yellow/orange: warning alerts */
-  --color-danger:  #EF4444;       /* Red: errors, destructive actions */
-  --color-info:    #3B82F6;       /* Blue: info alerts, badges */
+  --color-success: #10b981; /* Green: success alerts, badges, buttons */
+  --color-warning: #f59e0b; /* Yellow/orange: warning alerts */
+  --color-danger: #ef4444; /* Red: errors, destructive actions */
+  --color-info: #3b82f6; /* Blue: info alerts, badges */
 
   /* === BACKGROUNDS (layered use) === */
-  --color-background: var(--color-primary);       /* Main page background */
-  --color-surface: var(--color-primary-soft);     /* Card / panel background */
-  --color-hover: #F3F4F6;                         /* Hover state for rows or items */
+  --color-background: var(--color-primary); /* Main page background */
+  --color-surface: var(--color-primary-soft); /* Card / panel background */
+  --color-hover: #f3f4f6; /* Hover state for rows or items */
 
   /* === SHADOWS (depth) === */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);        /* Small shadow: inputs, buttons */
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);         /* Medium shadow: cards, dropdowns */
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.15);      /* Large shadow: modals, popovers */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05); /* Small shadow: inputs, buttons */
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1); /* Medium shadow: cards, dropdowns */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15); /* Large shadow: modals, popovers */
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    background-color: var(--color-background);
-     font-family: "Cal Sans", sans-serif;
+body {
+  background-color: var(--color-background);
+  font-family: "Cal Sans", sans-serif;
 }
-header{
-   display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
-    max-height: 80px;  /* Optional: limits header height on large screens */
-    width: 100%;
-    border-bottom:1px solid var(--color-border);
-    padding: 0 1.5rem;   
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  max-height: 80px; /* Optional: limits header height on large screens */
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 1.5rem;
 }
 h1,
 h2,
-h3{
-    color: var(--color-text);
-    font-size: 1.5rem;
+h3 {
+  color: var(--color-text);
+  font-size: 1.5rem;
 }
-a{
-    text-decoration: none;
-    color: var(--color-text);
+a {
+  text-decoration: none;
+  color: var(--color-text);
 }
 .logo {
-    height: 100%;             /* Keep it relative to header height */
-    max-height: 120px;        /* Ensures logo never grows too big */
-    width: auto;             /* Maintain aspect ratio */
-    display: block;          /* Remove inline spacing issues */
+  height: 100%; /* Keep it relative to header height */
+  max-height: 120px; /* Ensures logo never grows too big */
+  width: auto; /* Maintain aspect ratio */
+  display: block; /* Remove inline spacing issues */
 }
-.nav{
-    width: 15%;
-    display: flex;
-    justify-content: space-between;
+.nav {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
 }
-.nav > *{
-    border:2px solid var(--color-header-border);
-    padding: 0.5rem;
-    border-radius: 10px;
-    font-size: 1.3rem;
-
+.nav > * {
+  border: 2px solid var(--color-header-border);
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
 }
-.nav > *:hover{
-    border:2px solid var(--color-accent);
-    background-color: var(--color-accent);
-    color: var(--color-accent-bg);
-    
+.nav > *:hover {
+  border: 2px solid var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-accent-bg);
 }
-.content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    width: 100%;
-    gap: 10px;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+  gap: 10px;
 }
-.intro-logo{
-   width: 50%;
-   height: 50vh;
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
-   align-items: center;
+.intro-logo {
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
-.intro-logo h1{
-    font-size: 3rem;
-    padding-right: 5.5rem;
+.intro-logo h1 {
+  font-size: 3rem;
+  padding-right: 5.5rem;
 }
-.intro-logo .text{
-    font-size: 1.5rem;
+.intro-logo .text {
+  font-size: 1.5rem;
 }
 .started {
-    background-color: var(--color-accent);
-    color: var(--color-text);
-    width: 20%;
-    display: flex; 
-    flex-direction: column; 
-    text-align: center;
-    border: 1px solid var(--color-border);
-    box-sizing: border-box; 
-    border-radius: 10px;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+  border-radius: 10px;
 }
-.started a{
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    font-size: 2rem;
+.started a {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  font-size: 2rem;
 }
-.sign-wrapper{
-    display: flex;
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sign-content{
-    padding: 1rem;
-    border: 2px solid var(--color-border);
-    border-radius: 10px;
-    width: 35%;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-}
-.sign-form{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.sign-form input:not([type="submit"]){
-      width: 90%;
-    height: 50px;
-    border: 2px solid var(--color-border);
-    border-radius: 10px;
-    font-size: 1.5rem;
-    font-weight: bolder;
-    outline: none;
-}
-.sign-form input:not([type="submit"]):focus{
-    border: 2px solid var(--color-accent);
-}
-.sign-form .submit{
-   margin: 10% 0 0 25%; /* top right bottom left */
-    background-color: var(--color-accent);
-    width: 50%;
-    padding: 0.7rem;
-    border-radius: 10px;
-    border: 1px solid var(--color-border);
-    font-size: 1rem;
-    font-weight: bolder;
-    cursor: pointer;
-}
-.signup-wrapper{
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.sign-wrapper {
+  display: flex;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.signup-content{
-    padding: 1rem;
-    border: 2px solid var(--color-border);
-    border-radius: 10px;
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.sign-content {
+  padding: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  width: 35%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.signup-form{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.sign-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
-.signup-form input:not([type="submit"]){
-      width: 90%;
-    height: 50px;
-    border: 2px solid var(--color-border);
-    border-radius: 10px;
-    font-size: 1.5rem;
-    font-weight: bolder;
-    outline: none;
+.sign-form input:not([type="submit"]) {
+  width: 90%;
+  height: 50px;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  outline: none;
 }
-.signup-form input:not([type="submit"]):focus{
-    border: 2px solid var(--color-accent);
+.sign-form input:not([type="submit"]):focus {
+  border: 2px solid var(--color-accent);
 }
-.signup-form .submit{
-   margin: 5% 0 0 25%; /* top right bottom left */
-    background-color: var(--color-accent);
-    width: 50%;
-    padding: 0.7rem;
-    border-radius: 10px;
-    border: 1px solid var(--color-border);
-    font-size: 1rem;
-    font-weight: bolder;
-    cursor: pointer;
+.sign-form .submit {
+  margin: 10% 0 0 25%; /* top right bottom left */
+  background-color: var(--color-accent);
+  width: 50%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  font-size: 1rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.signup-wrapper {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.signup-content {
+  padding: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.msg-errors{
-    color: var(--color-danger);
-    padding-left: 5%;
-    font-size: 0.7rem;
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.signup-form input:not([type="submit"]) {
+  width: 90%;
+  height: 50px;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  outline: none;
+}
+.signup-form input:not([type="submit"]):focus {
+  border: 2px solid var(--color-accent);
+}
+.signup-form .submit {
+  margin: 5% 0 0 25%; /* top right bottom left */
+  background-color: var(--color-accent);
+  width: 50%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  font-size: 1rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.msg-errors {
+  color: var(--color-danger);
+  padding-left: 5%;
+  font-size: 0.7rem;
 }
 .welcome {
-  background: var(--color-primary-soft);   
+  background: var(--color-primary-soft);
   width: 30%;
   color: var(--color-text);
   padding: 1rem 2rem;
@@ -244,7 +242,7 @@ a{
   position: fixed;
   top: 15%;
   left: 35%;
-  animation-delay: 2s; 
+  animation-delay: 2s;
 }
 
 @keyframes fadeOut {
@@ -257,58 +255,72 @@ a{
   }
 }
 
-.folders-content{
-    border: 2px solid black;
-    display: flex;
-    height: 90vh;
+.folders-content {
+  display: flex;
+  height: 90vh;
 }
-.folder-nav{
-    border: 2px solid var(--color-border);
-    width: 20%;
-    /* background-color: red; */
-    display: flex;
-    flex-direction: column;
+.folder-nav {
+  border: 2px solid var(--color-border);
+  width: 20%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
 }
-.folders-header{
+.folders-header {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+}
+.folders-header > * {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+}
+.folders-items {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.folder-item {
+  width: 100%;
+  cursor: pointer;
+  font-size: x-large;
+  border-radius: 10px;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
+.add-folders input {
+  width: 80%;
+  display: flex;
+  height: 70%;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.folder-form{
     width: 100%;
-    height: 10vh;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--color-border);
-
-}
-.folders-header>*{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.7rem;
-}
-.folders-items{
-    background-color: red;
-    flex: 1;
-}
-.folder-item{
-    background-color: white;
-}
-.add-folders input{
-    width: 80%;
-    display: flex;
-    height: 70%;
-    border-radius: 10px;
-    outline: none;
-    border: 1px solid var(--color-border);
-    cursor: pointer;
-    font-size: 1.4rem;
-    font-weight: bold;
-
 }
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-   height: 100%;
+  height: 100%;
   color: var(--color-text);
   justify-content: center;
   align-items: center;
@@ -334,31 +346,31 @@ a{
   font-size: 1.5rem;
   cursor: pointer;
 }
-.modal-content form{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.modal-content input{
-       width: 90%;
-    height: 50px;
-    border: 2px solid var(--color-border);
-    border-radius: 10px;
-    font-size: 1.5rem;
-    font-weight: bolder;
-    outline: none;
+.modal-content input {
+  width: 90%;
+  height: 50px;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  outline: none;
 }
-.modal-content input:focus{
-    border: 2px solid var(--color-accent);
+.modal-content input:focus {
+  border: 2px solid var(--color-accent);
 }
-.model-button{
-      margin: 5% 0 0 25%; /* top right bottom left */
-    background-color: var(--color-accent);
-    width: 50%;
-    padding: 0.7rem;
-    border-radius: 10px;
-    border: 1px solid var(--color-border);
-    font-size: 1rem;
-    font-weight: bolder;
-    cursor: pointer;
+.model-button {
+  margin: 5% 0 0 25%; /* top right bottom left */
+  background-color: var(--color-accent);
+  width: 50%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  font-size: 1rem;
+  font-weight: bolder;
+  cursor: pointer;
 }

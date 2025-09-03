@@ -20,6 +20,7 @@
 
    <div class="folders-content">
     <div class="folder-nav">
+
       <div class="folders-header">
          <div class="add-folders">
           <input type="submit" value="📂 New Folder" class="open-modal-btn">
@@ -40,36 +41,18 @@
     <div class="folders-items">
       <% if (folders && folders.length > 0){%>
          <% folders.forEach(element => {%>
-          <div class="folder-item" >
-            <%= element.name%>
-          </div>
+          <!-- <input type="button" value=" <%= element.name%>" class="folder-item"> -->
+          <form action="/folders/files" method="POST" class="folder-form">
+        <input type="hidden" name="folderId" value="<%= element.id %>">
+        <button type="submit" class="folder-item"> <%= element.name %></button>
+      </form>
          <% });%>
     <%  }%>
     </div>
+   
    </div>
+    <div class="folder-content"></div>
   </body>
-  <script>
-  // Get elements
-  const modal = document.getElementById("newFolderModal");
-  const btn = document.querySelector(".open-modal-btn");
-  const closeBtn = document.querySelector(".close");
 
-  // Open modal
-  btn.addEventListener("click", () => {
-    modal.style.display = "flex";
-  });
-
-  // Close modal
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  // Close when clicking outside the modal content
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-</script>
-
+  <script src="/js/helper.js"></script>
 </html>

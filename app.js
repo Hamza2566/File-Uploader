@@ -18,7 +18,7 @@ app.set('view engine','ejs')
 
 // middlewares
 app.use(express.static('public'))
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 //session config
 app.use(session({
@@ -30,7 +30,7 @@ app.use(session({
     }),  
     cookie: {
         // maxAge: 7 * 24 * 60 * 60 * 1000,  
-        maxAge: 15000,
+        maxAge: 20000,
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
@@ -52,6 +52,20 @@ app.use('/folders',folders)
 app.get('/',(req,res)=>{
     res.render('home')
 })
+
+app.post("/folders/files", async (req, res) => {
+//   const folderId = Number(req.body.folderId);
+  console.log(req.body);
+  
+
+//   const folder = await prisma.folder.findUnique({
+//     where: { id: folderId },
+//     include: { files: true }
+//   });
+
+//   res.render("partials/files", { folder });
+});
+
 
 
 const port = process.env.PORT
