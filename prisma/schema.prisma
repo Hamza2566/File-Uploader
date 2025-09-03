@@ -28,7 +28,6 @@ model Folder {
   name    String
   user    User    @relation(fields: [userId], references: [id])
   userId  Int
-
   files   File[]
 }
 

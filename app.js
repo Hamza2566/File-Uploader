@@ -29,7 +29,8 @@ app.use(session({
         checkPeriod: 2 * 60 * 1000,  
     }),  
     cookie: {
-        maxAge: 7 * 24 * 60 * 60 * 1000,  
+        // maxAge: 7 * 24 * 60 * 60 * 1000,  
+        maxAge: 15000,
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',

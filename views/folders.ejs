@@ -14,6 +14,62 @@
   </head>
   <body>
      <%- include('partials/header') %>
-     <%= currentuser.username %>
+     <% if(currentuser && currentuser.username){%>
+      <h2 class="welcome"> 👋 Welcome back, <%= currentuser.username%></h2>
+   <%  }%>
+
+   <div class="folders-content">
+    <div class="folder-nav">
+      <div class="folders-header">
+         <div class="add-folders">
+          <input type="submit" value="📂 New Folder" class="open-modal-btn">
+          <div class="modal" id="newFolderModal">
+          <div class="modal-content">
+          <span class="close">&times;</span>
+         <h2>Create New Folder</h2>
+         <form action="/folders" method="POST">
+          <label for="Name">Name</label>
+      <input type="text" name="folderName" placeholder="Folder name" class="model-input" required>
+      <button type="submit" class="model-button">Create</button>
+    </form>
+  </div>
+         </div>
+         
+      </div>
+    </div>
+    <div class="folders-items">
+      <% if (folders && folders.length > 0){%>
+         <% folders.forEach(element => {%>
+          <div class="folder-item" >
+            <%= element.name%>
+          </div>
+         <% });%>
+    <%  }%>
+    </div>
+   </div>
   </body>
+  <script>
+  // Get elements
+  const modal = document.getElementById("newFolderModal");
+  const btn = document.querySelector(".open-modal-btn");
+  const closeBtn = document.querySelector(".close");
+
+  // Open modal
+  btn.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+
+  // Close modal
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Close when clicking outside the modal content
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
 </html>
