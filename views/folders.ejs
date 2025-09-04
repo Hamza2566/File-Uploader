@@ -40,10 +40,11 @@
     <div class="folders-items">
       <% if (folders && folders.length > 0){%>
          <% folders.forEach(element => {%>
-          <form action="/folder/files" method="POST" class="folder-form">
-        <input type="hidden" name="folderId" value="<%= element.id %>">
-        <button type="submit" class="folder-item"> <%= element.name %></button>
-      </form>
+           <button 
+        class="folder-link" 
+        data-id="<%= element.id %>">
+        📂 <%= element.name %>
+      </button>
          <% });%>
     <%  }%>
     </div>
@@ -51,7 +52,7 @@
    </div>
     <div class="folder-content">
       <% if(files && files.length > 0){ %>
-  <%- include('partials/files', { files: files ,folders:folders  }) %>
+  <%- include('partials/files', ) %>
 <% } else { %>
   <%- include('partials/files') %>
 <% } %>

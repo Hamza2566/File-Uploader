@@ -9,13 +9,9 @@ folders.get("/",async (req, res) => {
   where: { userId: req.user.id},
   include: { files: true }
 });
-console.log("folders",folders);
     const files = await prisma.file.findMany({
-         where: { id: Number(req.user.id) },
          include: { folder: true }
     })
-    console.log("files",files);
-    
   res.render("folders", { user: req.user?.username || null , folders:folders || {} , files: files || {}})
 });
 
@@ -36,6 +32,41 @@ folders.post("/", async (req, res) => {
     console.log(error);
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default folders;
 
 

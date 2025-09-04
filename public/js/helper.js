@@ -1,64 +1,69 @@
+// ======================
+// Folder Modal (New Folder)
+// ======================
+const folderModal = document.getElementById("newFolderModal");
 
-  // Get elements
-  const modal = document.getElementById("newFolderModal");
-  const btn = document.querySelector(".open-modal-btn");
-  const closeBtn = document.querySelector(".close");
-  // Open modal
-  btn.addEventListener("click", () => {
-    modal.style.display = "flex";
-  });
+// Event delegation for folder modal
+document.addEventListener("click", (e) => {
+  // Open folder modal
+  if (e.target.classList.contains("open-modal-btn")) {
+    folderModal.style.display = "flex";
+  }
 
-  // Close modal
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
+  // Close folder modal (click X)
+  if (e.target.classList.contains("close")) {
+    folderModal.style.display = "none";
+  }
 
-  // Close when clicking outside the modal content
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
- document.querySelectorAll(".folder-form").forEach(form => {
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(form);
-  const params = new URLSearchParams(formData); // converts to x-www-form-urlencoded
-    for (let [key, value] of formData.entries()) {
-  console.log(key, value);
-}
-
-
-  const response = await fetch(form.action, {
-    method: form.method,
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: params
-  });
-
-  const html = await response.text();
-  document.querySelector(".folder-content").innerHTML = html;
+  // Close folder modal (click outside content)
+  if (e.target === folderModal) {
+    folderModal.style.display = "none";
+  }
 });
- })
 
+// ======================
+// File Modal (New File)
+// ======================
+document.addEventListener("click", (e) => {
+  const fileModal = document.querySelector(".modal-file");
 
+  // Open file modal
+  if (e.target.classList.contains("newfile")) {
+    fileModal.style.display = "flex";
+  }
 
+  // Close file modal (click X)
+  if (e.target.classList.contains("file-close")) {
+    fileModal.style.display = "none";
+  }
 
-  const newfilebtn = document.querySelector(".newfile")
-  const modalfile =  document.querySelector(".modal-file")
-  newfilebtn.addEventListener("click",()=>{
-     modalfile.style.display = "flex";
-  })
-  const closebtn = document.querySelector(".file-close")
-   closebtn.addEventListener("click", () => {
-    modalfile.style.display = "none";
-  });
-  window.addEventListener("click", (e) => {
-    if (e.target === modalfile) {
-      modalfile.style.display = "none";
+  // Close file modal (click outside content)
+  if (e.target === fileModal) {
+    fileModal.style.display = "none";
+  }
+});
+
+// ======================
+// Handle folder form submissions (AJAX)
+// ======================
+document.addEventListener("click", async (e) => {
+  if (e.target.classList.contains("folder-link")) {
+    const folderId = e.target.dataset.id;
+    console.log("Clicked folder:", folderId);
+
+    try {
+      const response = await fetch(`/files/${folderId}`, {
+        method: "GET"
+      });
+
+      if (!response.ok) throw new Error("Failed to load files");
+
+      const html = await response.text();
+      document.querySelector(".folder-content").innerHTML = html;
+    } catch (err) {
+      console.error(err);
+      document.querySelector(".folder-content").innerHTML =
+        `<p style="color:red;">⚠️ Failed to load files</p>`;
     }
-    console.log(e.target);
-    
-  });
+  }
+});
