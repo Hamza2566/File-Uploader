@@ -42,3 +42,23 @@ form.addEventListener("submit", async (e) => {
   document.querySelector(".folder-content").innerHTML = html;
 });
  })
+
+
+
+
+  const newfilebtn = document.querySelector(".newfile")
+  const modalfile =  document.querySelector(".modal-file")
+  newfilebtn.addEventListener("click",()=>{
+     modalfile.style.display = "flex";
+  })
+  const closebtn = document.querySelector(".file-close")
+   closebtn.addEventListener("click", () => {
+    modalfile.style.display = "none";
+  });
+  window.addEventListener("click", (e) => {
+    if (e.target === modalfile) {
+      modalfile.style.display = "none";
+    }
+    console.log(e.target);
+    
+  });

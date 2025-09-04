@@ -34,7 +34,7 @@ model Folder {
 model File {
   id       Int     @id @default(autoincrement())
   name     String
-  content  String
-  folder   Folder  @relation(fields: [folderId], references: [id])
+  url      String   // e.g. "/uploads/myphoto.png" or "https://s3.com/bucket/..."
+  folder   Folder   @relation(fields: [folderId], references: [id])
   folderId Int
 }

@@ -13,12 +13,15 @@ signup.get('/',(req,res)=>{
 })
 signup.post('/',validateRegister, async  (req,res)=>{
     const {username,email,password} = req.body
+    
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.render( "signup",{errors: errors.array() });
     }
      const salt = await bcrypt.genSalt(10);
     const hashedpassword = await bcrypt.hash(password, salt);
+    console.log(email,username,hashedpassword);
+    
 
     console.log("Hashed password:", hashedpassword);
     
