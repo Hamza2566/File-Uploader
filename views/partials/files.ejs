@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+  
+</style>
 <body>
   <div class="files-header">
-   <% if (files && files.length > 0) { %>
-  <h2>Files in <%= files[0].folder?.name || "Unknown folder" %></h2>
+   <% if (folders || files.length > 0) { %>
+  <h1>Files in <%= folders.name ||files[0].folder.name %></h1>
 <% } else { %>
-  <h2>No files found</h2>
+  <h2>No files found </h2>
 <% } %>
-
-          <input type="submit" value="📄 New File" class="newfile">
-
+  <input type="submit" value="📄 New File" class="newfile">
   </div>
      <div class="modal-file" id="newFileModal">
           <div class="modal-file-content">
@@ -28,14 +29,28 @@
          </div>
   <div class="files-content">
     <% if (files.length > 0) { %>
-    <ul>
-      <% files.forEach(file => { %>
-        <li>
-          <strong>Name:</strong> <%= file.name %> <br>
-          <strong>Content:</strong> <%= file.Url %>
-        </li>
-      <% }) %>
-    </ul>
+   <table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+      <th>options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% files.forEach(file => { %>
+      <tr>
+        <td><%= file.name %></td>
+        <td><%= file.size %></td>
+        <td><%= file.createdAt.toLocaleString() %></td>
+        <td><%= file.updatedAt.toLocaleString() %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
   <% } else { %>
     <h3>No files in this folder</h3>
   <% } %>

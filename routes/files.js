@@ -14,9 +14,12 @@ files.post('/files',async(req,res)=>{
          where: { id: Number(folderId) },
          include: { folder: true }
     })
-    console.log(files);
-    
-    res.render("partials/files",{files:files})
+    console.log("files",files);
+    const folders = await prisma.folder.findUnique({
+      where:{id: Number(folderId)}
+    })
+    console.log("folders in files",folders);
+    res.render("partials/files",{files:files , folders:folders})
 })
 files.post("/postman",async(req,res)=>{
 

@@ -6,11 +6,10 @@ const prisma = new PrismaClient();
 
 folders.get("/",async (req, res) => {
     const folders = await prisma.folder.findMany({
-  where: { userId: req.user.id },
+  where: { userId: req.user.id},
   include: { files: true }
 });
 console.log("folders",folders);
-
     const files = await prisma.file.findMany({
          where: { id: Number(req.user.id) },
          include: { folder: true }

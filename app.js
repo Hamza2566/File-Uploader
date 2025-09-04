@@ -111,7 +111,7 @@ app.get('/',(req,res)=>{
 
 
 // 4) Create route to handle file upload
-app.post("/upload", upload.single("avatar"), (req, res) => {
+app.post("/upload", upload.single("avatar"), async(req, res) => {
   // 4.1) Multer puts file info in req.file
   // 4.2) Text fields (username, etc.) go into req.body
   res.json({
@@ -119,7 +119,31 @@ app.post("/upload", upload.single("avatar"), (req, res) => {
     file: req.file,
     fields: req.body,
   });
-  console.log(req.body);
+  const name  = req.file.filename
+  const url = req.file.path
+  const id = req.user.id
+  
+  try {
+    const folderID = await prisma.folder.findFirst({
+      where:{userId : Number(id)}
+    })
+    const folderId = folderID.id
+    
+    const newfile = await  prisma.file.create({
+      data:{
+        name,
+        url,
+        id,
+        folderId
+      }
+    })
+    
+    console.log(newfile);
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
   
 });
 
