@@ -1,64 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <div class="files-header">
-   <% if (files && files.length > 0) { %>
-  <!-- <h2>Files in <%= files[0].folder?.name || "Unknown folder" %></h2> -->
-   <h2>All Files In Storage</h2>
-<% } else { %>
-  <h2>No files found</h2>
-<% } %>
+<div class="files-header">
+  <% if (folders && folders.length > 0) { %>
+    <h2>📂  <%= folders[0].name %></h2>
+  <% } else { %>
+    <h2>No files found</h2>
+  <% } %>
 
-          <input type="submit" value="📄 New File" class="newfile">
+  <input type="submit" value="📄 New File" class="newfile" />
+</div>
 
-  </div>
-     <div class="modal-file" id="newFileModal">
-          <div class="modal-file-content">
-          <span class="file-close">&times;</span>
-         <h2>Create New Folder</h2>
-         <form action="/upload" method="POST" enctype="multipart/form-data">
-          <input type="file" name="avatar" id="file" required>
-      <button type="submit" class="model-button">Create</button>
+<!-- ======================
+     File Modal (Upload New File)
+====================== -->
+<div class="modal-file" id="newFileModal">
+  <div class="modal-file-content">
+    <span class="file-close">&times;</span>
+    <h2>Upload New File</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="avatar" id="file" required />
+      <button type="submit" class="model-button">Upload</button>
     </form>
   </div>
-         </div>
-  <div class="files-content">
-    <% if (files.length > 0) { %>
-    <table border="1" cellpadding="8" cellspacing="0">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Size</th>
-      <th>Created At</th>
-      <th>Updated At</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% files.forEach(file => { %>
-      <tr>
-        <td><%= file.name %></td>
-        
-        <% if (file.size === 0) { %>
-          <td>-</td>
-        <% } else { %>
-          <td><%= file.size %></td>
-        <% } %>
-        <td><%= file.createdAt.toLocaleString() %></td>
-        <td><%= file.updatedAt.toLocaleString() %></td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
+</div>
 
+<!-- ======================
+     Files List
+====================== -->
+<div class="files-content">
+  <% if (folders && folders.length > 0) { %>
+    <% const folder = folders[0]; %>
+
+    <% if (folder.files && folder.files.length > 0) { %>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Folder</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% folder.files.forEach(file => { %>
+            <tr>
+              <td><%= file.name %></td>
+              <td><%= file.size === 0 ? "-" : file.size %></td>
+              <td><%= folder.name %></td>
+              <td><%= file.createdAt.toLocaleString() %></td>
+              <td><%= file.updatedAt.toLocaleString() %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No files in this folder</p>
+    <% } %>
   <% } else { %>
-    <h3>No files in this folder</h3>
+    <h3>No folders found</h3>
   <% } %>
-  </div>
-</body>
-</html>
+</div>

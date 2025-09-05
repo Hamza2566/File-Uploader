@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <title>🗂️ </title>
+    <title>🗂️</title>
   </head>
   <body>
      <%- include('partials/header') %>
@@ -51,13 +51,11 @@
    
    </div>
     <div class="folder-content">
-      <% if(files && files.length > 0){ %>
-  <%- include('partials/files', ) %>
-<% } else { %>
-  <%- include('partials/files') %>
+      <% if(folders && folders.length > 0){ %>
+  <%- include('partials/files', {folders:folders || []} ) %>
 <% } %>
-
     </div>
+
   </body>
 
   <script src="/js/helper.js"></script>

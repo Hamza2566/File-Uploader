@@ -7,44 +7,16 @@ import signup from "./routes/signup.js";
 import signin from "./routes/signin.js";
 import folders from "./routes/folders.js";
 import multer from "multer";
-import path from "path";
-import fs from "fs";
-import crypto from "crypto";
+
 import files from "./routes/files.js";
+import uploads from "./routes/uploads.js";
 
 const prisma = new PrismaClient();
 
 const app = express();
 // 1) Make sure an "uploads" folder exists
-fs.mkdirSync("uploads", { recursive: true });
-
-// 2) Initialize storage engine (decides WHERE and HOW files are stored)
-const storage = multer.diskStorage({
-  // 2.1) Choose destination folder
-  destination: (req, file, cb) => {
-    cb(null, "uploads"); // all files go into "uploads" folder
-  },
-
-  // 2.2) Decide filename for the file
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname); // get extension (.png, .jpg, etc.)
-    const uniqueName = crypto.randomUUID() + ext; // generate safe unique name
-    cb(null, uniqueName);
-  },
-});
 
 
-// 3) Configure Multer middleware
-const upload = multer({
-  storage, // use our storage engine
-  limits: { fileSize: 5 * 1024 * 1024 }, // limit: 5MB max
-  fileFilter: (req, file, cb) => {
-    // 3.1) Accept only images
-    const allowed = /png|jpg|jpeg|webp/;
-    const isOk = allowed.test(file.mimetype);
-    cb(isOk ? null : new Error("Only images allowed"), isOk);
-  },
-});
 
 // view engine
 app.set("views", "views");
@@ -97,6 +69,7 @@ app.use("/signup", signup);
 app.use("/signin", signin);
 app.use("/folders", folders);
 app.use("/files",files)
+app.use("/upload",uploads)
 
 app.get("/", (req, res) => {
   res.render("home");
