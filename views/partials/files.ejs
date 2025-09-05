@@ -1,9 +1,16 @@
 <div class="files-header">
-  <% if (folders && folders.length > 0) { %>
-    <h2>📂  <%= folders[0].name %></h2>
-  <% } else { %>
-    <h2>No files found</h2>
-  <% } %>
+  <% if(folders.length < 2){%>
+    <a href="/folders">🏠 ⬅️</a>
+    <h2>📂  <%= folders[0].name%></h2>
+      <a href="/folders/delete" class="deletefolder">Delete <%=folders[0].name%></a>
+
+
+
+  <%}%>
+  
+  <% if (folders && folders.length > 1) { %>
+    <h2>📂  All Files In The Storage</h2>
+  <% }%>
 
   <input type="submit" value="📄 New File" class="newfile" />
 </div>
@@ -15,7 +22,7 @@
   <div class="modal-file-content">
     <span class="file-close">&times;</span>
     <h2>Upload New File</h2>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <form action="/upload/<%= folders[0].id%>" method="POST" enctype="multipart/form-data">
       <input type="file" name="avatar" id="file" required />
       <button type="submit" class="model-button">Upload</button>
     </form>
@@ -27,35 +34,51 @@
 ====================== -->
 <div class="files-content">
   <% if (folders && folders.length > 0) { %>
-    <% const folder = folders[0]; %>
-
-    <% if (folder.files && folder.files.length > 0) { %>
-      <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Folder</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-          </tr>
-        </thead>
-        <tbody>
+  <table border="1" cellpadding="8" cellspacing="0" class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Folder</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% folders.forEach(folder => { %>
+        <% if (folder.files && folder.files.length > 0) { %>
           <% folder.files.forEach(file => { %>
             <tr>
               <td><%= file.name %></td>
-              <td><%= file.size === 0 ? "-" : file.size %></td>
+              <td>
+  <% if (file.size === 0) { %>
+    -
+  <% } else if (file.size < 1024) { %>
+    <%= file.size %> B
+  <% } else if (file.size < 1024 * 1024) { %>
+    <%= Math.floor(file.size / 1024) %> KB
+  <% } else { %>
+    <%= Math.floor(file.size / (1024 * 1024)) %> MB
+  <% } %>
+</td>
+
               <td><%= folder.name %></td>
               <td><%= file.createdAt.toLocaleString() %></td>
               <td><%= file.updatedAt.toLocaleString() %></td>
+              <td class="options">
+                <a href="/file/delete" class="delete">Delete</a>
+                <a href="/file/delete" class="edit">Edit</a>
+              
+              </td>
             </tr>
           <% }) %>
-        </tbody>
-      </table>
-    <% } else { %>
-      <p>No files in this folder</p>
-    <% } %>
-  <% } else { %>
-    <h3>No folders found</h3>
-  <% } %>
+        <% } %>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h3>No folders found</h3>
+<% } %>
+
 </div>

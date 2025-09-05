@@ -10,6 +10,7 @@ folders.get("/",async (req, res) => {
 });
     console.log(folders);
     
+    
     // const files = await prisma.file.findMany({
     //      include: { folder: true }
     // })
