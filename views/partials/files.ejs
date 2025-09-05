@@ -1,8 +1,9 @@
 <div class="files-header">
   <% if(folders.length < 2){%>
     <a href="/folders">🏠 ⬅️</a>
-    <h2>📂  <%= folders[0].name%></h2>
       <a href="/folders/delete" class="deletefolder">Delete <%=folders[0].name%></a>
+      <a href="/folders/edit" class="editfolder">Edit <%=folders[0].name%></a>
+
 
 
 
@@ -34,6 +35,9 @@
 ====================== -->
 <div class="files-content">
   <% if (folders && folders.length > 0) { %>
+     <% if(folders.length < 2){%>
+    <h2>📂  <%= folders[0].name%></h2>
+  <%}%>
   <table border="1" cellpadding="8" cellspacing="0" class="table">
     <thead>
       <tr>
@@ -41,7 +45,6 @@
         <th>Size</th>
         <th>Folder</th>
         <th>Created At</th>
-        <th>Updated At</th>
         <th>Options</th>
       </tr>
     </thead>
@@ -65,10 +68,9 @@
 
               <td><%= folder.name %></td>
               <td><%= file.createdAt.toLocaleString() %></td>
-              <td><%= file.updatedAt.toLocaleString() %></td>
               <td class="options">
                 <a href="/file/delete" class="delete">Delete</a>
-                <a href="/file/delete" class="edit">Edit</a>
+
               
               </td>
             </tr>

@@ -8,12 +8,6 @@ folders.get("/",async (req, res) => {
     const folders = await prisma.folder.findMany({
   include: { files: true }
 });
-    console.log(folders);
-    
-    
-    // const files = await prisma.file.findMany({
-    //      include: { folder: true }
-    // })
   res.render("folders", { folders:folders || {}})
 });
 
