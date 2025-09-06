@@ -1,8 +1,8 @@
 <div class="files-header">
   <% if(folders.length < 2){%>
     <a href="/folders">🏠 ⬅️</a>
-      <a href="/folders/delete" class="deletefolder">Delete <%=folders[0].name%></a>
-      <a href="/folders/edit" class="editfolder">Edit <%=folders[0].name%></a>
+      <a href="/folders/delete/<%= folders[0].id%>" class="deletefolder">Delete <%=folders[0].name%></a>
+      <a href="/folders/edit/<%= folders[0].id%>" class="editfolder">Edit <%=folders[0].name%></a>
 
 
 
@@ -11,10 +11,13 @@
   
   <% if (folders && folders.length > 1) { %>
     <h2>📂  All Files In The Storage</h2>
-  <% }%>
+<% } else { %>
+    <input type="submit" value="📄 New File" class="newfile" />
+<% } %>
 
-  <input type="submit" value="📄 New File" class="newfile" />
+
 </div>
+
 
 <!-- ======================
      File Modal (Upload New File)
@@ -29,6 +32,7 @@
     </form>
   </div>
 </div>
+
 
 <!-- ======================
      Files List
@@ -69,7 +73,8 @@
               <td><%= folder.name %></td>
               <td><%= file.createdAt.toLocaleString() %></td>
               <td class="options">
-                <a href="/file/delete" class="delete">Delete</a>
+              <a href="/files/delete/<%= file.id %>?folderId=<%= file.folderId %>" class="delete"> Delete</a>
+
 
               
               </td>

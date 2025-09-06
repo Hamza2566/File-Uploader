@@ -10,12 +10,17 @@ signin.get('/',(req,res)=>{
     res.render('signin')
 })
 
-signin.post('/',
-     passport.authenticate("local",{
-            successRedirect:'/folders',
-            failureRedirect:"/signin",
-      })
-)
+signin.post(
+  "/",
+  passport.authenticate("local", {
+    failureRedirect: "/signin",
+  }),
+  (req, res) => {
+    req.session.showWelcome = true;
+    res.redirect("/folders");
+  }
+);
+
 
 
 export default signin

@@ -13,13 +13,17 @@ files.get("/:id",async(req,res)=>{
   where: { id: id},
   include: { files: true }
 });
-
-   const file = await prisma.file.findMany({
-      where:{folderId:id},
-      include:{folder:true},
-   })
   res.render("partials/files", { folders:folders || {} })
 })
-
-
+files.get("/delete/:id",async(req,res)=>{
+     const fileId = Number(req.params.id);
+  const folderId = Number(req.query.folderId);
+  const deletedFile = await prisma.file.deleteMany({
+    where: {
+      id:fileId,
+      folderId:folderId,
+    },
+  });
+  res.redirect("/folders")
+})
 export default files

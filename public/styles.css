@@ -230,7 +230,6 @@ a {
   font-size: 0.7rem;
 }
 .welcome {
-  background: var(--color-primary-soft);
   width: 30%;
   color: var(--color-text);
   padding: 1rem 2rem;
@@ -240,7 +239,7 @@ a {
   text-align: center;
   animation: fadeOut 3s ease-in-out forwards;
   position: fixed;
-  top: 15%;
+  top: 2%;
   left: 35%;
   animation-delay: 2s;
 }
@@ -324,6 +323,7 @@ a {
 .folder-form{
     width: 100%;
 }
+
 .modal {
   display: none;
   position: fixed;

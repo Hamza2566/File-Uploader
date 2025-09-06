@@ -14,7 +14,7 @@
   </head>
   <body>
      <%- include('partials/header') %>
-     <% if(currentuser && currentuser.username){%>
+     <% if(showWelcome && currentuser && currentuser.username){%>
       <h2 class="welcome"> 👋 Welcome back, <%= currentuser.username%></h2>
    <%  }%>
 
@@ -53,7 +53,9 @@
     <div class="folder-content">
       <% if(folders && folders.length > 0){ %>
   <%- include('partials/files', {folders:folders || []} ) %>
-<% } %>
+<% } else{ %>
+     <h2>There are no Folders to display </h2>
+<%}%>
     </div>
 
   </body>

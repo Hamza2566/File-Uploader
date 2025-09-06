@@ -74,6 +74,18 @@ app.use("/upload",uploads)
 app.get("/", (req, res) => {
   res.render("home");
 });
+app.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+
+    // Destroy session completely
+    req.session.destroy(() => {
+      res.clearCookie("connect.sid"); // clear session cookie
+      res.redirect("/signin"); // redirect after logout
+    });
+  });
+});
+
 
 
 const port = process.env.PORT;
